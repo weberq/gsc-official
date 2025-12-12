@@ -5,7 +5,7 @@ import { LeadForm } from "./LeadForm";
 import { UniversityLogos } from "./UniversityLogos";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { CheckCircle2, Users, Trophy, ArrowRight, Sparkles } from "lucide-react";
+import { CheckCircle2, Users, Trophy, ArrowRight, Sparkles, Plane } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -107,6 +107,48 @@ export function Hero() {
               </DialogContent>
             </Dialog>
           </div>
+        </div>
+
+        {/* MIDDLE SPACE: Stylized Flight Path Graphic */}
+        <div className="hidden lg:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] pointer-events-none z-0">
+           {/* SVG Flight Path */}
+           <svg className="absolute w-full h-full" viewBox="0 0 600 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+             <motion.path 
+               d="M 50 250 C 200 250, 250 100, 550 50" 
+               stroke="url(#flightGradient)" 
+               strokeWidth="4" 
+               strokeDasharray="12 12"
+               strokeLinecap="round"
+               initial={{ pathLength: 0, opacity: 0 }}
+               animate={{ pathLength: 1, opacity: 1 }}
+               transition={{ duration: 1.5, delay: 0.5 }}
+             />
+             <defs>
+               <linearGradient id="flightGradient" x1="50" y1="250" x2="550" y2="50" gradientUnits="userSpaceOnUse">
+                 <stop stopColor="#3b82f6" stopOpacity="0" />
+                 <stop offset="0.5" stopColor="#fbbf24" />
+                 <stop offset="1" stopColor="#3b82f6" />
+               </linearGradient>
+             </defs>
+           </svg>
+           
+           {/* The Plane */}
+           <motion.div
+             initial={{ offsetDistance: "0%", opacity: 0, scale: 0.8 }}
+             animate={{ offsetDistance: "100%", opacity: 1, scale: 1 }}
+             style={{ offsetPath: 'path("M 50 250 C 200 250, 250 100, 550 50")', offsetRotate: "auto" }}
+             transition={{ duration: 2, delay: 0.5, ease: "easeInOut" }}
+             className="absolute"
+           >
+              {/* Using a Plane Icon or Image. A high quality lucide icon or small image works. Let's use a nice plane icon with effect */}
+              {/* Using a Plane Icon instead of Image to prevent 404s */}
+              <div className="relative transform rotate-90">
+                 <div className="absolute inset-0 bg-blue-500 blur-lg opacity-50 rounded-full" />
+                 <div className="relative w-16 h-16 bg-gradient-to-br from-white to-slate-200 rounded-full flex items-center justify-center shadow-lg border border-white/50 -rotate-45">
+                    <Plane className="w-8 h-8 text-blue-600 fill-blue-600" />
+                 </div>
+              </div>
+           </motion.div>
         </div>
 
         {/* Right Content - Split Globe & New Creative CTA Card */}
