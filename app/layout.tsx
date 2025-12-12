@@ -1,4 +1,3 @@
-import { Navbar } from "@/components/layout/Navbar";
 import { Toaster } from "@/components/ui/toaster";
 import { Inter, Outfit } from "next/font/google";
 import "./globals.css";
@@ -15,7 +14,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={cn(inter.variable, outfit.variable, "min-h-screen bg-background font-sans antialiased")}>
-        <Navbar />
         {children}
         <Toaster />
       </body>
