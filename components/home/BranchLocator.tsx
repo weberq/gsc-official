@@ -6,25 +6,18 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const LOCATIONS = [
   {
-    city: "Hyderabad (HQ)",
-    address: "11-31, Sanjay Gandhi Nagar, Shapur Nagar, IDA, Jeedimetla, Hyderabad, Telangana-500055",
+    city: "Kompally",
+    address: "Buchamma's Plaza, HT Rd, above Tony&Guy, beside Narayana college, Pedda Bashirabad, Meenakshi Estate, Alwal, Hyderabad, Secunderabad, Telangana 500067",
     phone: "+91 98765 43210",
-    email: "samachar@weberq.in",
-    mapLink: "https://maps.google.com/?q=11-31, Sanjay Gandhi Nagar, Shapur Nagar, IDA, Jeedimetla, Hyderabad",
+    email: "info@gscedu.com",
+    mapLink: "https://maps.app.goo.gl/Ghr3LSjyaPommdaQA",
   },
   {
-    city: "Visakhapatnam",
-    address: "2nd Floor, Sai Complex, Dwaraka Nagar, Visakhapatnam, AP-530016",
-    phone: "+91 98765 43211",
-    email: "vizag@weberq.in",
-    mapLink: "https://maps.google.com/?q=Visakhapatnam",
-  },
-  {
-    city: "Vijayawada",
-    address: "Benz Circle, MG Road, Vijayawada, AP-520010",
-    phone: "+91 98765 43212",
-    email: "vijayawada@weberq.in",
-    mapLink: "https://maps.google.com/?q=Vijayawada",
+    city: "Begumpet",
+    address: "Office : #103,1st Floor, Mayank Mekins Maheshwari Plaza, Ameerpet Rd, above Airtel Store, Begumpet, Hyderabad, Telangana 500016",
+    phone: "+91 98765 43210",
+    email: "info@gscedu.com",
+    mapLink: "https://maps.app.goo.gl/yphdEQLu4YixoiDm6",
   },
 ];
 
