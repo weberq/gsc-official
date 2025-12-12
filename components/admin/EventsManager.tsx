@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { createEvent, deleteEvent } from "@/app/actions/events";
+import { createEvent, deleteEvent, updateEvent } from "@/app/actions/events";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -105,11 +105,43 @@ export function EventsManager({ initialEvents }: { initialEvents: Event[] }) {
                         {event.description}
                     </p>
 
-                    <div className="mt-4 pt-4 border-t border-slate-100 flex justify-between items-center">
+                      <div className="mt-4 pt-4 border-t border-slate-100 flex justify-between items-center">
                         <div className="text-xs font-semibold text-slate-400">
                              {event.registeredCount} Registrations
                         </div>
-                        <Button variant="ghost" size="sm" className="text-slate-600">Edit</Button>
+                        
+                        <Dialog>
+                            <DialogTrigger asChild>
+                                <Button variant="ghost" size="sm" className="text-slate-600">Edit</Button>
+                            </DialogTrigger>
+                            <DialogContent>
+                                <DialogHeader>
+                                    <DialogTitle>Edit Event</DialogTitle>
+                                </DialogHeader>
+                                <form action={async (formData) => {
+                                    await updateEvent(formData);
+                                }} className="space-y-4 py-4">
+                                    <input type="hidden" name="id" value={event.id} />
+                                    <div className="space-y-2">
+                                        <Label>Event Title</Label>
+                                        <Input name="title" required defaultValue={event.title} />
+                                    </div>
+                                    <div className="space-y-2">
+                                        <Label>Date</Label>
+                                        <Input name="date" type="datetime-local" required defaultValue={new Date(event.date).toISOString().slice(0, 16)} />
+                                    </div>
+                                    <div className="space-y-2">
+                                        <Label>Location</Label>
+                                        <Input name="location" required defaultValue={event.location} />
+                                    </div>
+                                    <div className="space-y-2">
+                                        <Label>Description</Label>
+                                        <Textarea name="description" defaultValue={event.description || ''} />
+                                    </div>
+                                    <Button type="submit" className="w-full">Update Event</Button>
+                                </form>
+                            </DialogContent>
+                        </Dialog>
                     </div>
                 </div>
             </div>
