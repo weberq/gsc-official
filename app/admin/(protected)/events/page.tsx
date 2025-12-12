@@ -5,9 +5,18 @@ import { Calendar } from "lucide-react";
 export const dynamic = 'force-dynamic';
 
 export default async function AdminEventsPage() {
-  const events = await prisma.event.findMany({
-    orderBy: { date: 'asc' }
-  });
+  let events = [];
+  try {
+    events = await prisma.event.findMany({
+        orderBy: { date: 'asc' }
+    });
+  } catch (error) {
+    console.log("Using Mock Events");
+    events = [
+        { id: '1', title: 'USA Education Fair (Demo)', date: new Date('2025-05-15'), location: 'Hyderabad', description: 'Mock event data for Netlify.', registeredCount: 120 },
+        { id: '2', title: 'UK Admission Day (Demo)', date: new Date('2025-06-10'), location: 'Vijayawada', description: 'Mock event data for Netlify.', registeredCount: 45 },
+    ];
+  }
 
   return (
     <div className="space-y-6">

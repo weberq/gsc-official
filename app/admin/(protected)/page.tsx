@@ -4,16 +4,33 @@ import { Users, Calendar, Trophy, TrendingUp } from "lucide-react";
 export const dynamic = 'force-dynamic';
 
 export default async function AdminDashboard() {
-  const [leadCount, eventCount, successStoryCount] = await Promise.all([
-    prisma.lead.count(),
-    prisma.event.count(),
-    prisma.successStory.count()
-  ]);
+  let leadCount = 0;
+  let eventCount = 0;
+  let successStoryCount = 0;
+  let recentLeads: any[] = [];
 
-  const recentLeads = await prisma.lead.findMany({
-    take: 5,
-    orderBy: { createdAt: 'desc' }
-  });
+  try {
+    [leadCount, eventCount, successStoryCount] = await Promise.all([
+        prisma.lead.count(),
+        prisma.event.count(),
+        prisma.successStory.count()
+    ]);
+
+    recentLeads = await prisma.lead.findMany({
+        take: 5,
+        orderBy: { createdAt: 'desc' }
+    });
+  } catch (error) {
+    console.error("DB Error (Demo Mode Active):", error);
+    // Mock Data for Demo
+    leadCount = 128;
+    eventCount = 8;
+    successStoryCount = 12;
+    recentLeads = [
+        { id: '1', name: 'John Doe (Demo)', phone: '+91 98765 43210', city: 'Hyderabad', createdAt: new Date() },
+        { id: '2', name: 'Jane Smith (Demo)', phone: '+91 91234 56789', city: 'Vijayawada', createdAt: new Date(Date.now() - 86400000) },
+    ];
+  }
 
   return (
     <div className="space-y-8">
