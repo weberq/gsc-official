@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { createEvent, deleteEvent } from "@/app/actions/events";
+import { createEvent, deleteEvent, updateEvent } from "@/app/actions/events";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -14,6 +14,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Calendar, MapPin, Trash2, Plus } from "lucide-react";
+import { EditEventDialog } from "./EditEventDialog";
 
 interface Event {
   id: string;
@@ -105,11 +106,12 @@ export function EventsManager({ initialEvents }: { initialEvents: Event[] }) {
                         {event.description}
                     </p>
 
-                    <div className="mt-4 pt-4 border-t border-slate-100 flex justify-between items-center">
+                      <div className="mt-4 pt-4 border-t border-slate-100 flex justify-between items-center">
                         <div className="text-xs font-semibold text-slate-400">
                              {event.registeredCount} Registrations
                         </div>
-                        <Button variant="ghost" size="sm" className="text-slate-600">Edit</Button>
+                        
+                        <EditEventDialog event={event} />
                     </div>
                 </div>
             </div>

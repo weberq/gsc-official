@@ -74,7 +74,7 @@ export function Hero() {
           >
             Your gateway to the world's best universities. We provide end-to-end guidance from profile evaluation to visa approval.
             <span className="block mt-4 font-bold text-slate-900">
-              🇺🇸 USA &nbsp;•&nbsp; 🇬🇧 UK &nbsp;•&nbsp; 🇨🇦 Canada &nbsp;•&nbsp; 🇦🇺 Australia
+              🇺🇸 USA &nbsp;•&nbsp; 🇬🇧 UK &nbsp;•&nbsp; 🇨🇦 Canada &nbsp;•&nbsp; 🇦🇺 Australia &nbsp;•&nbsp; 🇳🇿 New Zealand
             </span>
           </motion.p>
           

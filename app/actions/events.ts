@@ -29,6 +29,32 @@ export async function createEvent(formData: FormData) {
   redirect("/admin/events");
 }
 
+export async function updateEvent(formData: FormData) {
+  const id = formData.get("id") as string;
+  const title = formData.get("title") as string;
+  const dateStr = formData.get("date") as string;
+  const location = formData.get("location") as string;
+  const description = formData.get("description") as string;
+
+  if (!id || !title || !dateStr || !location) {
+      return { error: "Missing required fields" };
+  }
+
+  await prisma.event.update({
+    where: { id },
+    data: {
+      title,
+      date: new Date(dateStr),
+      location,
+      description,
+    }
+  });
+
+  revalidatePath("/admin/events");
+  revalidatePath("/events");
+  redirect("/admin/events");
+}
+
 export async function deleteEvent(id: string) {
     if (!id) return;
 
