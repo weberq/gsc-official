@@ -6,8 +6,8 @@ services:
       dockerfile: Dockerfile
     restart: always
     # Ports are NOT exposed directly. Traefik handles routing.
-    # ports:
-    #   - "3000:3000"
+    ports:
+      - "3000:3000"
     environment:
       - DATABASE_URL=file:/app/prisma/dev.db
       - NEXTAUTH_URL=https://gscedu.weberq.in
