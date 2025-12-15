@@ -13,18 +13,15 @@ services:
     environment:
       - DATABASE_URL=file:/app/prisma/dev.db
       - NEXTAUTH_URL=https://gscedu.weberq.in
-      - NEXTAUTH_SECRET=changeme_in_production
+      - NEXTAUTH_SECRET=rbdRH/vCPtdZbgYyWCffliY/UnzDtBs7VLlaQ9yMkhU=
     volumes:
       - ./prisma/dev.db:/app/prisma/dev.db
     
     # Traefik Configuration
     labels:
       - "traefik.enable=true"
-      # Router Rule
       - "traefik.http.routers.gsc.rule=Host(`gscedu.weberq.in`)"
-      - "traefik.http.routers.gsc.entrypoints=websecure"
-      - "traefik.http.routers.gsc.tls.certresolver=myresolver"
-      # Service Port (Next.js runs on 3000 inside container)
+      - "traefik.http.routers.gsc.entrypoints=web"
       - "traefik.http.services.gsc.loadbalancer.server.port=3000"
     
     networks:
