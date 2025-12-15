@@ -11,7 +11,7 @@ services:
       - "3000:3000"
     environment:
       - DATABASE_URL=file:/app/prisma/dev.db
-      - NEXTAUTH_URL=https://gsc.weberq.in
+      - NEXTAUTH_URL=https://gscedu.weberq.in
       - NEXTAUTH_SECRET=changeme_in_production
     volumes:
       # Persist SQLite database
