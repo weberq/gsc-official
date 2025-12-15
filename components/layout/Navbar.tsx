@@ -75,6 +75,9 @@ export function Navbar() {
                     <ListItem href="/countries/australia" title="Study in Australia 🇦🇺">
                       Group of Eight universities and scholarship options.
                     </ListItem>
+                    <ListItem href="/countries/newzealand" title="Study in New Zealand 🇳🇿">
+                      High quality education and excellent work-life balance.
+                    </ListItem>
                   </ul>
                 </NavigationMenuContent>
               </NavigationMenuItem>
